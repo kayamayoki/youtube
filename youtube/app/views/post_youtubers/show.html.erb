@@ -1,0 +1,58 @@
+<div class="post-body">
+
+  <%= attachment_image_tag @post_youtuber, :image %>
+
+  <p>チャンネル名：<%= @post_youtuber.ch_name %></p>
+  <p>チャンネル説明：<%= @post_youtuber.caption %></p>
+  <p>チャンネルURL：<%= @post_youtuber.url %></p>
+  <p>登録者数：<%= @post_youtuber.member %></p>
+  <p>ユーザーネーム：<%= @post_youtuber.user.name %></p>
+  <p>投稿日時：<%= @post_youtuber.created_at.strftime('%Y/%m/%d') %></p>
+
+  <% if @post_youtuber.user == current_user %>
+    <%= link_to "削除", post_youtuber_path(@post_youtuber), method: :delete %>
+  <% end %>
+
+    <% if @post_youtuber.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_youtuber_favorites_path(@post_youtuber), method: :delete do %>
+        ♥<%= @post_youtuber.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_youtuber_favorites_path(@post_youtuber), method: :post do %>
+        ♡<%= @post_youtuber.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+
+</div>
+
+<div class="comments">
+  <p>コメント件数：<%= @post_youtuber.post_comments.count %></p>
+  <% @post_youtuber.post_comments.each do |post_comment| %>
+  <p><%= image_tag('sample-author1.jpg') %></p>
+  <%= post_comment.user.name %>
+  <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+
+   <% if post_comment.user == current_user %>
+  <div class="comment-delete">
+  <%= link_to "削除", post_youtuber_post_comment_path(post_comment.post_youtuber, post_comment), method: :delete %>
+  </div>
+  <% end %>
+
+
+ <% end %>
+  </div>
+
+<div class="new-comment">
+  <%= form_with(model:[@post_youtuber, @post_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+</div>
+
+
+
+</div>

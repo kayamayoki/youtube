@@ -1,0 +1,23 @@
+<div class="profile-container">
+  <h3 class="profile-name"><%= @user.name %></h3>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+
+</div>
+
+
+<% @post_youtubers.each do |post_youtuber| %>
+<div>
+  <%= link_to post_youtuber_path(post_youtuber.id) do %>
+    <%= attachment_image_tag post_youtuber, :image %>
+  <% end %>
+  <p>チャンネル名：<%= post_youtuber.ch_name %></p>
+  <p>チャンネル説明：<%= post_youtuber.caption %></p>
+  <p>登録者数：<%= post_youtuber.member %></p>
+  <p>チャンネルURL：<%= post_youtuber.url %></p>
+  <p>ユーザーネーム：<%= post_youtuber.user.name %></p>
+</div>
+<% end %>
+<%= paginate @post_youtubers %>

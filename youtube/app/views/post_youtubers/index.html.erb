@@ -1,0 +1,53 @@
+<% @post_youtubers.each do |post_youtuber| %>
+<div>
+
+  <%= link_to post_youtuber_path(post_youtuber.id) do %>
+
+  <%= attachment_image_tag post_youtuber, :image, :fill, 200, 200, fallback: "no_image.jpg"  %>
+
+  <% end %>
+
+  <p>チャンネル名：<%= post_youtuber.ch_name %></p>
+  <p>チャンネル説明：<%= post_youtuber.caption %></p>
+  <p>投稿者：<%= post_youtuber.user.name %></p>
+  <p>チャンネルURL：<%= post_youtuber.url %></p>
+  <p>登録者数：<%= post_youtuber.member %></p>
+  <p><%= link_to "#{post_youtuber.post_comments.count} コメント", post_youtuber_path(post_youtuber.id) %></p>
+
+
+</div>
+<% end %>
+
+<section class="card">
+  <img class="card-img" src="images/bear.jpg" alt="">
+  <div class="card-content">
+
+<% @post_youtubers.each do |post_youtuber| %>
+<div>
+
+  <%= link_to post_youtuber_path(post_youtuber.id) do %>
+
+  <%= attachment_image_tag post_youtuber, :image, :fill, 200, 200, fallback: "no_image.jpg"  %>
+
+  <% end %>
+
+  <p>チャンネル名：<%= post_youtuber.ch_name %></p>
+  <p>チャンネル説明：<%= post_youtuber.caption %></p>
+  <p>投稿者：<%= post_youtuber.user.name %></p>
+  <p>チャンネルURL：<%= post_youtuber.url %></p>
+  <p>登録者数：<%= post_youtuber.member %></p>
+  <p><%= link_to "#{post_youtuber.post_comments.count} コメント", post_youtuber_path(post_youtuber.id) %></p>
+
+
+</div>
+<% end %>
+
+  </div>
+
+  <div class="card-link">
+    <a href="http://webcreatorbox.com/about">About</a>
+    <a href="http://webcreatorbox.com/">Website</a>
+  </div>
+</section>
+
+<%= paginate @post_youtubers %>
