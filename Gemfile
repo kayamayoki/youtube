@@ -72,6 +72,18 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
+#タグ機能
+gem 'acts-as-taggable-on', '~> 6.0'
+
+#リンク機能
+gem 'rinku'
+
+#GOOGLE　AIP機能
+gem 'google-api-client', '~> 0.11.1'
+
+#
+gem 'trollop'
+
 #デプロイ
 gem 'dotenv-rails'
 group :production do

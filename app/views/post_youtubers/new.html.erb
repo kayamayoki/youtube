@@ -7,16 +7,44 @@
 <% end %>
 
 <%= form_with model: @post_youtuber, local:true do |f| %>
+   <div class="form-inline mb-3">
+   <div class="form-group">
+        <%= f.text_field :ch_name, autofocus: true, placeholder: "チャンネル名", class: "form-control mr-3" %>
+    </div>
+ 　</div>
+ 
+   <div class="form-inline mb-3">
+   <div class="form-group">
+        <%= f.text_area :caption, autofocus: true, placeholder: "チャンネル説明", class: "form-control mr-3" %>
+    </div>
+ 　</div>
+ 
+ 
+   <div class="form-inline mb-3">
+   <div class="form-group">
+        <%= f.text_field :member, autofocus: true, placeholder: "登録者数", class: "form-control mr-3" %>
+    </div>
+ 　</div>
+ 　
+   <div class="form-inline mb-3">
+   <div class="form-group">
+        <%= f.text_field :url, autofocus: true, placeholder: "チャンネルURL", class: "form-control mr-3" %>
+    </div>
+ 　</div>
+ 　
+   <div class="form-inline mb-3">
+   <div class="form-group">
+        <%= f.text_field :tag_list, value: @post_youtuber.tag_list.join(','), id: 'tags' %>
+    </div>
+ 　</div>
+ 　
   <h4>画像</h4>
   <%= f.attachment_field :image %>
-  <h4>チャンネル名</h4>
-  <%= f.text_field :ch_name %>
-  <h4>チャンネル説明</h4>
-  <%= f.text_area :caption %>
-  <h4>登録者数</h4>
-  <%= f.text_area :member %>
-  <h4>チャンネルURL</h4>
-  <%= f.text_area :url %>
 
-  <%= f.submit '投稿' %>
+ <div class="form-inline mb-3">
+    <div class="form-group">
+      <%= f.submit "投稿", class: "btn btn-block btn-success" %>
+    </div>
+    </div>
 <% end %>
+

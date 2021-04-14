@@ -10,6 +10,9 @@ class PostYoutuber < ApplicationRecord
   validates :member, presence: true
   validates :url, presence: true
 
+  #タグ
+  acts_as_taggable
+
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

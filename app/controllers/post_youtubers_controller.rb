@@ -34,7 +34,7 @@ class PostYoutubersController < ApplicationController
  private
 
   def post_youtuber_params
-    params.require(:post_youtuber).permit(:ch_name, :image, :caption, :member, :url)
+    params.require(:post_youtuber).permit(:ch_name, :image, :caption, :member, :url, :tag_list)
   end
 
 
