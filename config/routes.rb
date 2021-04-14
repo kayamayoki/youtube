@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  
 
   get 'users/show'
   devise_for :users
@@ -6,9 +8,8 @@ Rails.application.routes.draw do
   root 'post_youtubers#index'
   
   get 'tubes/index'
-  root "tubes#index"
-  
-  
+  root to: 'tubes#index'
+    
   resources :post_youtubers, only: [:new, :create, :index, :show, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]

@@ -84,6 +84,9 @@ gem 'google-api-client', '~> 0.11.1'
 #
 gem 'trollop'
 
+#haml記法
+gem 'haml-rails'
+
 #デプロイ
 gem 'dotenv-rails'
 group :production do
