@@ -72,6 +72,7 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
+
 #タグ機能
 gem 'acts-as-taggable-on', '~> 6.0'
 
