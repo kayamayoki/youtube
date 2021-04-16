@@ -85,6 +85,9 @@ gem 'google-api-client', '~> 0.11.1'
 #
 gem 'trollop'
 
+#検索機能
+gem 'ransack'
+
 #haml記法
 gem 'haml-rails'
 

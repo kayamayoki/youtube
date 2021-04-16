@@ -14,4 +14,6 @@ class FavoritesController < ApplicationController
     redirect_to post_youtuber_path(post_youtuber)
   end
 
+
+
 end

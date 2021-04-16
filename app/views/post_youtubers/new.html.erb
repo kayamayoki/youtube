@@ -19,10 +19,9 @@
     </div>
  　</div>
  
- 
    <div class="form-inline mb-3">
-   <div class="form-group">
-        <%= f.text_field :member, autofocus: true, placeholder: "登録者数", class: "form-control mr-3" %>
+   <div class="form-group"> 
+    <%= f.select :member, [["0~5000", "5000"], ["5001~10000", "10000"],["10001~100000", "100000"],["100001~1000000", "1000000"]], include_blank: "選択して下さい" %>
     </div>
  　</div>
  　

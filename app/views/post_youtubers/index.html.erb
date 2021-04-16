@@ -1,51 +1,73 @@
-<div class="mx-auto w-25  ">
-<section class="card">
-  <img class="card-img" src="images/bear.jpg" alt="">
-  <div class="card-content">
+  <%= search_form_for @q do |f| %>
+  <div class = 'nav-up'>
+    <%= f.text_field :ch_name_cont, placeholder: "キーワードから探す", class: "input-box" %>
+    <%= f.submit "検索" %>
+  </div>
+  <div class='nav-down'>
+    <div class='label-select'>
+      <%= f.label :member, '登録者', class: 'label' %>
+      <%= f.radio_button :member_lteq, '' %>
+      指定なし
+      <%= f.radio_button :member_lteq, '1000' %>
+      ~1000人
+      <%= f.radio_button :member_lteq, '5000' %>
+      ~5000人
+      <%= f.radio_button :member_lteq, '10000' %>
+      ~10,000人
+      <%= f.radio_button :member_lteq, '100000' %>
+      ~100,000人
+      <br>
+    </div>
+  </div>
+<% end %>
 
-<% @post_youtubers.each do |post_youtuber| %>
-<div>
 
+<div class="row">
+  <% @post_youtubers.each do |post_youtuber| %> 
+  <div class="card" style="width: 20rem;">
+     
+     <div class="card-body">
+     
+  <!--　YOUTUBER情報  -->
+  
   <%= link_to post_youtuber_path(post_youtuber.id) do %>
-
   <%= attachment_image_tag post_youtuber, :image, :fill, 200, 200, fallback: "no_image.jpg"  %>
-
   <% end %>
-
   <p>チャンネル名：<%= post_youtuber.ch_name %></p>
   <p>チャンネル説明：<%= post_youtuber.caption %></p>
-  <p>投稿者：<%= post_youtuber.user.name %></p>
-  <p>チャンネルURL：<%= raw Rinku.auto_link(h(post_youtuber.url)) %></p>
   <p>登録者数：<%= post_youtuber.member %></p>
-<% post_youtuber.tag_list.each do |tag| %>
-  <span class="badge badge-primary mr-1 p-2"><%= tag %></span>
-<% end %>
-  <p><%= link_to "#{post_youtuber.post_comments.count} コメント", post_youtuber_path(post_youtuber.id) %></p>
 
-<!-- Twitterシェア -->
-<a href ="https://twitter.com/share?ref_src=twsrc%5Etfw"
+  <!-- タグ -->
+  <% post_youtuber.tag_list.each do |tag| %>
+    <span class="badge badge-primary mr-1 p-2"><%= link_to tag, post_youtubers_path(tag_name: tag), class: "text-white" %></span>
+  <% end %>
+  
+  <!-- コメント -->
+  <p><%= link_to "#{post_youtuber.post_comments.count} コメント", post_youtuber_path(post_youtuber.id) %></p>
+ 
+ <!-- いいね  --> 
+  <td id = 'favorite_form_<%= post_youtuber.id %>'>
+  <%= render 'favorites/favorite_form', post_youtuber: post_youtuber %>
+  </td>
+  
+  <!-- YOUTUBE登録ボタン -->
+  <script src="https://apis.google.com/js/platform.js"></script>
+  <div class="g-ytsubscribe" data-channelid="<%= post_youtuber.url %>" data-layout=full data-count="default"></div>
+  
+  <!-- Twitterシェア -->
+  <a href ="https://twitter.com/share?ref_src=twsrc%5Etfw"
    class = "twitter-share-button"
    data-text = "<%= post_youtuber.ch_name %>"
    data-url = "<%= post_youtuber.url %>"
    data-hashtags = "Youtuber"
    data-lang = "ja"
    data-show-count = "false">Tweet</a>
-<script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8"></script> 
-
-<!-- LINEシェア　-->
-<div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" 
-data-url="　" 
-data-color="default" data-size="small" data-count="true" style="display: none;"></div>
- <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"> </script>
-
-
-
-</div>
-<% end %>
+  <script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8"></script> 
 
 
   </div>
-</div>
-</section>
+  </div>
 
-<%= paginate @post_youtubers %>
+<% end %> 
+</div>
+
