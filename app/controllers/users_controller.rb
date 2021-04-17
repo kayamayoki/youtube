@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+  @user = current_user
+  end
+  
   def show
     @user = User.find(params[:id])
     @post_youtubers = @user.post_youtubers.page(params[:page]).reverse_order

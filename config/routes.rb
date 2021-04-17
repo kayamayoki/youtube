@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   get 'tubes/index'
   root to: 'tubes#index'
+  
+  
     
   resources :post_youtubers, only: [:new, :create, :index, :show, :destroy] do
     resource :favorites, only: [:create, :destroy]

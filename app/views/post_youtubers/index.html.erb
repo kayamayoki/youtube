@@ -1,3 +1,5 @@
+<div class="yohaku"></div>
+
   <%= search_form_for @q do |f| %>
   <div class = 'nav-up'>
     <%= f.text_field :ch_name_cont, placeholder: "キーワードから探す", class: "input-box" %>
@@ -46,9 +48,9 @@
   <p><%= link_to "#{post_youtuber.post_comments.count} コメント", post_youtuber_path(post_youtuber.id) %></p>
  
  <!-- いいね  --> 
-  <td id = 'favorite_form_<%= post_youtuber.id %>'>
+  <div id= "favorite_form_<%= post_youtuber.id %>">
   <%= render 'favorites/favorite_form', post_youtuber: post_youtuber %>
-  </td>
+  </div>
   
   <!-- YOUTUBE登録ボタン -->
   <script src="https://apis.google.com/js/platform.js"></script>

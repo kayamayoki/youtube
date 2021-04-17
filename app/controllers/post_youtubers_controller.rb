@@ -16,7 +16,7 @@ class PostYoutubersController < ApplicationController
 
   def index
     @post_youtubers = PostYoutuber.page(params[:page]).reverse_order
-    
+    @user = current_user
     #検索
     @q = PostYoutuber.ransack(params[:q])
     @post_youtubers = @q.result

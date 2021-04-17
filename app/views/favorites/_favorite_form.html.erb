@@ -1,5 +1,14 @@
 <% if post_youtuber.favorited_by?(current_user) %>
-  <%= link_to post_youtuber.favorites.count, post_youtuber_favorites_path(post_youtuber.id), method: :delete, remote: true, class: "fas fa-heart heart_red" %>
+  <p>
+    <%= link_to  post_youtuber_favorites_path(post_youtuber.id), data: {"turbolinks" => false},method: :delete, remote: true do %>
+      ❤<%= post_youtuber.favorites.count %>
+    <% end %>
+  </p>
+
 <% else %>
-  <%= link_to post_youtuber.favorites.count, post_youtuber_favorites_path(post_youtuber.id), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
+ <p>
+    <%= link_to post_youtuber_favorites_path(post_youtuber.id),data: {"turbolinks" => false}, method: :post, remote: true do %>
+      ♡<%= post_youtuber.favorites.count %>
+    <% end %>
+  </p>
 <% end %>

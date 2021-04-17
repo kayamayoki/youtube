@@ -17,6 +17,18 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+
+.yohaku {
+  height:100px;
+}
+
+.shadow-sm{
+  position:fixed;
+  top:0;
+  width: 100%;
+  z-index:500;
+}
+
 .card {
   width: 350px;
   background: #fff;

@@ -19,5 +19,4 @@ class PostYoutuber < ApplicationRecord
   end
 
 
-
 end

@@ -1,3 +1,4 @@
+<div class="yohaku"></div>
 <div class="mx-auto w-25  ">
 <div class="post-body">
 
@@ -11,29 +12,26 @@
   <p>投稿日時：<%= @post_youtuber.created_at.strftime('%Y/%m/%d') %></p>
 
 <!-- 投稿削除  -->
-  <% if @post_youtuber.user == current_user %>
-    <%= link_to "削除", post_youtuber_path(@post_youtuber), method: :delete %>
-  <% end %>
-
+    <% if @post_youtuber.user == current_user %>
+     <%= link_to "削除", post_youtuber_path(@post_youtuber), method: :delete %>
+    <% end %>
+ 
 <!-- いいね  -->
-    <td id = 'favorite_form_<%= @post_youtuber.id %>'>
-    <%= render 'favorites/favorite_form', post_youtuber: @post_youtuber %>
-    </td>
+    <div id = 'favorite_form_<%= @post_youtuber.id %>'>
+     <%= render 'favorites/favorite_form', post_youtuber: @post_youtuber %>
+    </div>
   
 <!-- タグ  -->  
-<% @post_youtuber.tag_list.each do |tag| %>
-  <span class="badge badge-primary mr-1 p-2"><%= tag %></span>
-<% end %>
+    <% @post_youtuber.tag_list.each do |tag| %>
+     <span class="badge badge-primary mr-1 p-2"><%= tag %></span>
+    <% end %>
 
 </div>
 
 <!-- コメント  -->
      <div id="comments_area">
         <%= render 'post_comments/post_comment_list', post_youtuber: @post_youtuber, post_comments: @post_comments %>
+        <%= render 'post_comments/post_comment_form', post_youtuber: @post_youtuber, post_comment: @post_comment %>
       </div>
-      <%= render 'post_comments/post_comment_form', post_youtuber: @post_youtuber, post_comment: @post_comment %>
-
-
-
-</div>
+      </div>
 </div>
