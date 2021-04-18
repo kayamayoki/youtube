@@ -25,7 +25,6 @@ class PostYoutubersController < ApplicationController
     if params[:tag_name]
       @post_youtubers = PostYoutuber.tagged_with("#{params[:tag_name]}")
     end
-    
   end
 
   def show
@@ -40,6 +39,14 @@ class PostYoutubersController < ApplicationController
     redirect_to post_youtubers_path
   end
 
+
+  def rank
+  @all_ranks = PostYoutuber.find(Favorite.group(:post_youtuber_id).order('count(post_youtuber_id) desc').limit(10).pluck(:post_youtuber_id))
+  @ranks = PostYoutuber.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order("count(*) desc")
+  @daily_ranks = PostYoutuber.joins(:favorites).where(favorites: { created_at: Time.now.all_day}).group(:id).order("count(*) desc")
+  @weekly_ranks = PostYoutuber.joins(:favorites).where(favorites: { created_at: Time.now.all_week}).group(:id).order("count(*) desc")
+
+  end
 
 
  private
