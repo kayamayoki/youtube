@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'categories/index'
+  get 'categories/edit'
   get 'users/show'
   devise_for :users
     devise_scope :user do
@@ -14,12 +16,16 @@ Rails.application.routes.draw do
   get 'tubes/index'
   root to: 'tubes#index'
   
-  resources :post_youtubers, only: [:new, :create, :index, :show, :destroy] do
+  resources :post_youtubers, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
+    
+
     
   end
 
   resources :users, only: [:show, :edit, :update]
-
+  
+  resources :categories, except: [:new, :show]
+  
 end

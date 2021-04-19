@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+
+    <div class="text-danger">
+      <% if @post_youtuber.errors.any? %>
+        <%= pluralize(@post_youtuber.errors.count, "error") %> prohibited this obj from being saved:
+        <li>
+          <% @post_youtuber.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        </li>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Editing</h2>
+      <%= form_with model:@post_youtuber, local: true do |f| %>
+      <div class="form-group">
+        <label for="book_title">
+          Title
+        </label>
+        <p>
+          <%= f.text_field :ch_name %>
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="book_opinion">
+          Opinion
+        </label>
+        <p>
+          <%= f.text_field :caption %>
+        </p>
+      </div>
+      <div class="form-group">
+        <p><%= f.submit 'Update Book' %></p>
+      </div>
+      <% end %>
+      
+      <p>
+        <%= link_to "Show", post_youtuber_path(@post_youtuber) %>
+        |
+        <%= link_to "Back", post_youtubers_path %>
+      </p>
+    </div>
+  </div>
+</div>

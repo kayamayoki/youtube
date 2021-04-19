@@ -3,9 +3,6 @@
 <div class="container-fluid">
 <%= form_with(url: tubes_index_path, local: true, method: :get, class: "search-form") do |form| %>
 
-<!-- YOUTUBUアイコン　-->
-<i class="fab fa-youtube col-1"></i>
-
 <!-- 検索バー  -->
 <div class="col-10 col-sm-3">
 <%= form.text_field :keyword, placeholder: "検索", class: "search-input col-sm-12" %>
@@ -29,21 +26,30 @@
 </div>
 
 
-<div class="contents row"></div>
-<% if @youtube_data != nil %>
+
+
+<div class="row">
+  <% if @youtube_data != nil %>
 <% @youtube_data.items.each do |item| %>
-<div class="content col-6 col-md-4 col-lg-3"></div>
-<% snippet = item.snippet %>
-<p class="movie_title">
-  <%= snippet.title %>
-</p>
-<p class="channel_title">
+  <div class="card" style="width: 20rem;">
+     
+     <div class="card-body">
+    <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="200" src="https://www.youtube.com/embed/<%= item.id.video_id %>" width="260"></iframe>
+      <% snippet = item.snippet %>
+     <p class="movie_title">
+      <%= snippet.title %>
+     </p>
+     <p class="channel_title">
   <%= snippet.channel_title %>
 </p>
 <p class="movie_date">
   <%= snippet.published_at.strftime("%Y年%m月%d日 %H時%M分") %>
 </p>
-<div class="movie"></div>
-<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="160" src="https://www.youtube.com/embed/<%= item.id.video_id %>" width="220"></iframe>
-<% end %>
-<% end %>
+ 
+      
+       </div>
+       </div>
+       <% end %>
+       <% end %>
+       </div>
+

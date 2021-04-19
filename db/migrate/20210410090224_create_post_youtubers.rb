@@ -7,8 +7,8 @@ class CreatePostYoutubers < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.integer :member
       t.text :url
-
-
+      t.integer :category_id
+      t.string :youtube_url
       t.timestamps
     end
   end

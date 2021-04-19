@@ -2,3 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.line{
+    width: 0%;
+    height: 1px;
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    z-index: 2;
+}
+
+.up{
+    width: 100%;
+    height: 50%;
+    background-color: black;
+    position: fixed;
+}
+
+.down{
+    width: 100%;
+    height: 50%;
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+}

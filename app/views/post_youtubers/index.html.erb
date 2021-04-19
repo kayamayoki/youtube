@@ -3,8 +3,14 @@
   <%= search_form_for @q do |f| %>
   <div class = 'nav-up'>
     <%= f.text_field :ch_name_cont, placeholder: "キーワードから探す", class: "input-box" %>
-    <%= f.submit "検索" %>
+    <%= f.collection_select :category_id_eq, Category.all, :id, :name,
+    {include_blank: '選択なし'}, class: 'sample' %>
+    <br>
+    <%= sort_link(@q, :'favorites_count desc', '人気順', hide_indicator: true) %>
+    <%= sort_link(@q, :'created_at desc', '新着順', hide_indicator: true) %>
+    <%= sort_link(@q, :'post_comment_count desc', 'コメント数順', hide_indicator: true) %>
   </div>
+  
   <div class='nav-down'>
     <div class='label-select'>
       <%= f.label :member, '登録者', class: 'label' %>
@@ -19,6 +25,7 @@
       <%= f.radio_button :member_lteq, '100000' %>
       ~100,000人
       <br>
+          <%= f.submit "検索" %>
     </div>
   </div>
 <% end %>
@@ -35,8 +42,10 @@
   <%= attachment_image_tag post_youtuber, :image, :fill, 200, 200, fallback: "no_image.jpg"  %>
   <% end %>
   <p>チャンネル名：<%= post_youtuber.ch_name %></p>
-  <p>チャンネル説明：<%= post_youtuber.caption %></p>
-  <p>登録者数：<%= post_youtuber.member %></p>
+  <p>カテゴリー : <%=  post_youtuber.category.name %></p>
+  <p>登録者数：<%= post_youtuber.member %>
+  <br>（※<%= post_youtuber.updated_at.strftime('%Y/%m/%d') %>時点）</p>
+
 
   <!-- タグ -->
   <% post_youtuber.tag_list.each do |tag| %>
@@ -55,6 +64,7 @@
   <script src="https://apis.google.com/js/platform.js"></script>
   <div class="g-ytsubscribe" data-channelid="<%= post_youtuber.url %>" data-layout=full data-count="default"></div>
   
+  <br>
   <!-- Twitterシェア -->
   <a href ="https://twitter.com/share?ref_src=twsrc%5Etfw"
    class = "twitter-share-button"

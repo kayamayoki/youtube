@@ -14,7 +14,7 @@ class TubesController < ApplicationController
     opt = {
       q: keyword,
       type: 'video',
-      max_results: 10,
+      max_results: 16,
       order: order,
       page_token: next_page_token,
     }

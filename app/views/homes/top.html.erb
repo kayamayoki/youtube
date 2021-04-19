@@ -1,7 +1,82 @@
-<div class="slider">
-<img src="assets/yt_icon_rgb.png" width="700" height="700" alt="">
-<img src="assets/yt_icon_rgb.png" width="400" height="700" alt="">
-<img src="assets/yt_icon_rgb.png" width="400" height="700" alt="">
-<img src="assets/yt_icon_rgb.png" width="400" height="700" alt="">
-</div>
+ <div class="up"></div>
+  <div class="down"></div>
+    <div class="line"></div>
+      <div class="hero">
+   
+   <div class = "scroll-content">
+     
+     <div class = "scroll-target image1">
+         <img src = "assets/social-media-1233873_1920.jpeg">
+     </div>
+     <div class = "scroll-target text2">ようこそ</div>
+     <div class = "scroll-target text4">rigth</div>
+     <div class = "scroll-target text5">left</div>
+     <div class = "scroll-target text7">animetion</div>
+   </div>
 
+    
+    </div>
+    <script>
+        $(".line").animate({"width":"100%"},1500,function(){
+            $(".line").css("right",0)
+            $(".line").animate({"width":"0%"},function(){
+                $(".up").animate({"height":"0%"})
+                $(".down").animate({"height":"0%"})
+
+            });
+        })
+     ScrollReveal().reveal('.text2', { 
+       duration: 2000, 
+       scale: 8,
+       delay: 100,
+       reset: true,
+       viewFactor: 0.4,
+     });
+     ScrollReveal().reveal('.text3', { 
+       duration: 2000, 
+       origin: 'top', 
+       delay: 100,
+       distance: '500px',
+       reset: true,
+       viewFactor: 0.4,
+     });
+     ScrollReveal().reveal('.text4', { 
+       duration: 2000, 
+       origin: 'right', 
+       delay: 100,
+       distance: '500px',
+       reset: true,
+       viewFactor: 0.4,
+     });
+     ScrollReveal().reveal('.text5', { 
+       duration: 2000, 
+       origin: 'left', 
+       delay: 100,
+       distance: '500px',
+       reset: true,
+       viewFactor: 0.4,
+     });
+     ScrollReveal().reveal('.text6', { 
+       duration: 2000, 
+       origin: 'bottom', 
+       delay: 100,
+       distance: '500px',
+       reset: true,
+       viewFactor: 0.4,
+     });
+     ScrollReveal().reveal('.text7', { 
+       duration: 2000, 
+       delay: 100,
+       scale: 0.1,
+       reset: true,
+       viewFactor: 0.4,
+     });
+     ScrollReveal().reveal('.image1', { 
+       duration: 2000,
+       delay: 2500,
+       reset: false,
+       opacity: 0,
+       viewFactor: 0.4,
+     });
+        
+    </script>

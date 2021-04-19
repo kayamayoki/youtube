@@ -1,9 +1,10 @@
 class PostYoutuber < ApplicationRecord
 
   belongs_to :user
-  attachment :image # ここを追加（_idは含めません）
+  attachment :image 
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  belongs_to :category
 
   validates :ch_name, presence: true
   validates :image, presence: true
@@ -22,5 +23,6 @@ class PostYoutuber < ApplicationRecord
   def self.last_week 
    PostYoutuber.joins(:favorites).where(favorites: { created_at:　0.days.ago.prev_week..0.days.ago.prev_week(:sunday)}).group(:id).order("count(*) desc")
   end
+
 
 end

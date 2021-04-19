@@ -1,5 +1,6 @@
 <div class ="yohaku"></div>
 
+<div class="mx-auto w-50">
 <h1>投稿フォーム</h1>
 <% if @post_youtuber.errors.any? %>
   <%= @post_youtuber.errors.count %>件のエラーが発生しました
@@ -9,36 +10,41 @@
 <% end %>
 
 <%= form_with model: @post_youtuber, local:true do |f| %>
-   <div class="form-inline mb-3">
-   <div class="form-group">
+   <div class ="max-auto w-50">
+     <div class="form-group">
         <%= f.text_field :ch_name, autofocus: true, placeholder: "チャンネル名", class: "form-control mr-3" %>
     </div>
- 　</div>
- 
-   <div class="form-inline mb-3">
+   </div>
+   
+   <div class ="max-auto w-50">
+     <div class="form-group"> 
+       <%= f.text_field :member, autofocus: true, placeholder: "登録者", class: "form-control mr-3" %>
+     </div>
+   </div>
+   
    <div class="form-group">
         <%= f.text_area :caption, autofocus: true, placeholder: "チャンネル説明", class: "form-control mr-3" %>
     </div>
- 　</div>
- 
-   <div class="form-inline mb-3">
-   <div class="form-group"> 
-    <%= f.select :member, [["0~5000", "5000"], ["5001~10000", "10000"],["10001~100000", "100000"],["100001~1000000", "1000000"]], include_blank: "選択して下さい" %>
-    </div>
- 　</div>
- 　
-   <div class="form-inline mb-3">
+   
+   
    <div class="form-group">
-        <%= f.text_field :url, autofocus: true, placeholder: "チャンネルURL", class: "form-control mr-3" %>
+        <%= f.text_field :url, autofocus: true, placeholder: "チャンネルURL (https://www.youtube.com/channel/XXXXXXXXXXXX ) ", class: "form-control mr-3" %>
     </div>
- 　</div>
- 　
-   <div class="form-inline mb-3">
+
    <div class="form-group">
-        <%= f.text_field :tag_list, value: @post_youtuber.tag_list.join(','), id: 'tags' %>
+        <%= f.text_field :youtube_url, autofocus: true, placeholder: "動画URL (https://youtu.be/XXXXXXXXXXXX)", class: "form-control mr-3" %>
     </div>
- 　</div>
- 　
+
+   <div class="form-group">
+        <%= f.text_field :tag_list, value: @post_youtuber.tag_list.join(','), id: 'tags', placeholder: "タグ" , class: "form-control mr-3" %>
+    </div>
+   
+   <div class ="max-auto w-50">
+     <div class="form-group">
+        <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: 'カテゴリーを選択してください' }, class: 'form-control' %>
+     </div>
+   </div>
+  
   <h4>画像</h4>
   <%= f.attachment_field :image %>
 
@@ -49,3 +55,4 @@
     </div>
 <% end %>
 
+</div>

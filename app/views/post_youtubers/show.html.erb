@@ -1,19 +1,22 @@
 <div class="yohaku"></div>
-<div class="mx-auto w-25  ">
+<div class="mx-auto w-50">
 <div class="post-body">
 
   <%= attachment_image_tag @post_youtuber, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
 
   <p>チャンネル名：<%= @post_youtuber.ch_name %></p>
   <p>チャンネル説明：<%= @post_youtuber.caption %></p>
-  <p>チャンネルURL：<%= raw Rinku.auto_link(h(@post_youtuber.url)) %></p>
   <p>登録者数：<%= @post_youtuber.member %></p>
-  <p>ユーザーネーム：<%= @post_youtuber.user.name %></p>
   <p>投稿日時：<%= @post_youtuber.created_at.strftime('%Y/%m/%d') %></p>
 
 <!-- 投稿削除  -->
     <% if @post_youtuber.user == current_user %>
-     <%= link_to "削除", post_youtuber_path(@post_youtuber), method: :delete %>
+      <td>
+        <%= link_to 'Edit', edit_post_youtuber_path(@post_youtuber), class: "btn btn-sm btn-success" %>
+      </td>
+      <td>
+     <%= link_to "Delete", post_youtuber_path(@post_youtuber), method: :delete , class: "btn btn-sm btn-danger"%>
+    </td>
     <% end %>
  
 <!-- いいね  -->
@@ -27,6 +30,19 @@
     <% end %>
 
 </div>
+  <!-- YOUTUBE登録ボタン -->
+  <script src="https://apis.google.com/js/platform.js"></script>
+  <div class="g-ytsubscribe" data-channelid="<%= @post_youtuber.url %>" data-layout=full data-count="default"></div>
+  
+  <!-- Twitterシェア -->
+  <a href ="https://twitter.com/share?ref_src=twsrc%5Etfw"
+   class = "twitter-share-button"
+   data-text = "<%= @post_youtuber.ch_name %>"
+   data-url = "https://www.youtube.com/channel/<%= @post_youtuber.url %>"
+   data-hashtags = "Youtuber"
+   data-lang = "ja"
+   data-show-count = "false">Tweet</a>
+  <script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8"></script> 
 
 <!-- コメント  -->
      <div id="comments_area">
@@ -34,4 +50,11 @@
         <%= render 'post_comments/post_comment_form', post_youtuber: @post_youtuber, post_comment: @post_comment %>
       </div>
       </div>
+</div>
+<div class ="mx-auto w-50">
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/<%= @post_youtuber.youtube_url%>"frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
+</div>
 </div>
