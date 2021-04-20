@@ -79,11 +79,10 @@
 
 .scroll-content{
  height: 100%;
- width: 100%;
+ weight: 100%;
 }
 .scroll-target{
  text-align: center;
- line-height: 600px;
  font-size: 30px;
  font-weight: bold;
 }
@@ -92,3 +91,122 @@
  width: 100%;
 }
 
+.scroll-target p{
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-30%,-50%);
+  color: #fff;
+  font-size: 60px;
+  font-family: serif;
+  border: 3px solid;
+  padding: 44px;
+  letter-spacing : 10px;                /* 文字間 */
+  border-shadow    : 
+       5px  5px 5px #ff0000,
+      -5px  5px 5px #ff0000,
+       5px -5px 5px #ff0000,
+      -5px -5px 5px #ff0000,
+       5px  0px 5px #ff0000,
+       0px  5px 5px #ff0000,
+      -5px  0px 5px #ff0000,
+       0px -5px 5px #ff0000;        /* 文字の影 */
+       
+  text-shadow    : 
+       5px  5px 5px #ff0000,
+      -5px  5px 5px #ff0000,
+       5px -5px 5px #ff0000,
+      -5px -5px 5px #ff0000,
+       5px  0px 5px #ff0000,
+       0px  5px 5px #ff0000,
+      -5px  0px 5px #ff0000,
+       0px -5px 5px #ff0000;        /* 文字の影 */
+}       /* 文字の影 */  
+
+
+.contents1{
+  position: relative;
+  margin-top: 200px;
+  margin: 200px;
+}
+
+
+
+.contentsText1{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  top: 40px;
+  right: 0;
+}
+
+.contents1 h2{
+  font-size: 50px;
+  font-weight: bold;
+  white-space: nowrap;
+  background-color: rgba(20,20,20, .8);
+  padding: 10px 20px;
+  line-height: 1.4;
+  letter-spacing: .05em;
+  border-radius: 5px;
+}
+
+.contents1 p{
+  line-height: 1.6;
+  background-color: #555;
+  font-size: 17px;
+  max-width: 360px;
+  margin: 0px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.contents1 img{
+  width: 65%;
+  border-radius: 5px;
+}
+
+
+
+.contents2 h2{
+  font-size: 50px;
+  font-weight: bold;
+  white-space: nowrap;
+  background-color: rgba(20,20,20, .8);
+  padding: 10px 10px;
+  line-height: 1.4;
+  letter-spacing: .05em;
+  border-radius: 5px;
+}
+
+.contents2 p{
+  line-height: 1.6;
+  background-color: #555;
+  font-size: 17px;
+  max-width: 340px;
+  margin: 0px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.contents2 img{
+  width: 65%;
+  border-radius: 5px;
+}
+
+.contentsText2{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 40px;
+  right: 94.5%;
+}
+
+.contents2{
+  position: relative;
+  margin-top: 200px;
+  margin: 200px;
+  left: 30%;
+}

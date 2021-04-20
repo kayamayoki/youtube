@@ -1,21 +1,58 @@
  <div class="up"></div>
   <div class="down"></div>
     <div class="line"></div>
-      <div class="hero">
-   
+
    <div class = "scroll-content">
      
      <div class = "scroll-target image1">
          <img src = "assets/social-media-1233873_1920.jpeg">
-     </div>
-     <div class = "scroll-target text2">ようこそ</div>
-     <div class = "scroll-target text4">rigth</div>
-     <div class = "scroll-target text5">left</div>
-     <div class = "scroll-target text7">animetion</div>
+     <p class ="scroll-target text2">Welcome<br>
+     to<br>Find the Yotuber!
+     </p>
    </div>
 
-    
-    </div>
+
+<div class = "contents1">
+    <img src = "assets/publicdomainq-0006183rzz.jpeg" alt="">
+     <div class = "contentsText1">
+         <h2>document　Title</h2>
+         <p>ここに文章が入ります。ここに文章が入ります。ああああああああああ<br>
+         　 ここに文章が入ります。ここに文章が入ります。
+         </p>
+         </div>
+         </div>
+         
+         
+<div class = "contents2">
+    <img src = "assets/publicdomainq-0006183rzz.jpeg" alt="">
+     <div class = "contentsText2">
+         <h2>document Title</h2>
+         <p>ここに文章が入ります。ここに文章が入ります。<br>
+         　 ここに文章が入ります。ここに文章が入ります。
+         </p>
+         </div>
+         </div>
+         
+<div class = "contents1">
+    <img src = "assets/publicdomainq-0006183rzz.jpeg" alt="">
+     <div class = "contentsText1">
+         <h2>document Title</h2>
+         <p>ここに文章が入ります。ここに文章が入ります。<br>
+         　 ここに文章が入ります。ここに文章が入ります。
+         </p>
+         </div>
+         </div>
+     
+<div class = "contents2">
+    <img src = "assets/publicdomainq-0006183rzz.jpeg" alt="">
+     <div class = "contentsText2">
+         <h2>document Title</h2>
+         <p>ここに文章が入ります。ここに文章が入ります。<br>
+         　 ここに文章が入ります。ここに文章が入ります。
+         </p>
+         </div>
+         </div>
+         
     <script>
         $(".line").animate({"width":"100%"},1500,function(){
             $(".line").css("right",0)
@@ -25,11 +62,20 @@
 
             });
         })
-     ScrollReveal().reveal('.text2', { 
-       duration: 2000, 
+     ScrollReveal().reveal('.text1', { 
+       duration: 5000, 
+       delay: 3000,
        scale: 8,
        delay: 100,
        reset: true,
+       viewFactor: 0.4,
+     });
+     ScrollReveal().reveal('.text2', { 
+       duration: 5000, 
+       delay: 3000,
+       scale: 8,
+       delay: 100,
+       reset: false,
        viewFactor: 0.4,
      });
      ScrollReveal().reveal('.text3', { 
@@ -40,20 +86,20 @@
        reset: true,
        viewFactor: 0.4,
      });
-     ScrollReveal().reveal('.text4', { 
+     ScrollReveal().reveal('.contents1', { 
        duration: 2000, 
        origin: 'right', 
        delay: 100,
        distance: '500px',
-       reset: true,
+       reset: false,
        viewFactor: 0.4,
      });
-     ScrollReveal().reveal('.text5', { 
+     ScrollReveal().reveal('.contents2', { 
        duration: 2000, 
        origin: 'left', 
        delay: 100,
        distance: '500px',
-       reset: true,
+       reset: false,
        viewFactor: 0.4,
      });
      ScrollReveal().reveal('.text6', { 
@@ -80,3 +126,5 @@
      });
         
     </script>
+
+</div>
