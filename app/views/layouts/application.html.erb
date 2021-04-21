@@ -21,7 +21,7 @@
                 pause: 5000,
             });
         });
-
+  
 </script>
   </head>
 
@@ -64,6 +64,9 @@
               <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
             <% else %>
+            <li>
+              <%= link_to "About", about_path, class: "fas fa-link nav-link text-light" %>
+            </li>
             <li class="nav-item">
               <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
             </li>

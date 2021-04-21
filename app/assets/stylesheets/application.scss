@@ -19,10 +19,29 @@
 
 
 
-.rank-container{
-    display: flex;
+.rank-container1 {
+  width: 400px;
+  margin: 80px;
+  
+  
 }
-
+.rank-container2 {
+  width: 400px;
+  margin: 0;
+    position: absolute;
+  top: 56%;
+  left: 40%;
+  transform: translate(-23%,-50%);
+  
+}
+.rank-container3 {
+  width: 400px;
+  margin: 0;
+  position: absolute;
+  top: 130%;
+  left: 40%;
+  transform: translate(80%,-50%);
+}
 .yohaku1 {
   height: 40px;
 }
@@ -78,7 +97,6 @@
 }
 
 .scroll-content{
- height: 100%;
  weight: 100%;
 }
 .scroll-target{
@@ -167,46 +185,3 @@
   border-radius: 5px;
 }
 
-
-
-.contents2 h2{
-  font-size: 50px;
-  font-weight: bold;
-  white-space: nowrap;
-  background-color: rgba(20,20,20, .8);
-  padding: 10px 10px;
-  line-height: 1.4;
-  letter-spacing: .05em;
-  border-radius: 5px;
-}
-
-.contents2 p{
-  line-height: 1.6;
-  background-color: #555;
-  font-size: 17px;
-  max-width: 340px;
-  margin: 0px;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.contents2 img{
-  width: 65%;
-  border-radius: 5px;
-}
-
-.contentsText2{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: absolute;
-  top: 40px;
-  right: 94.5%;
-}
-
-.contents2{
-  position: relative;
-  margin-top: 200px;
-  margin: 200px;
-  left: 30%;
-}

@@ -1,7 +1,8 @@
 <div class = "yohaku"></div>
 <!-- 月間ランキング　-->
+<div class="rank-container1">
 <h1>月間ランキング</h1>
-<div class="rank-container">
+
   <% @ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
     <%= i %>位
@@ -27,8 +28,8 @@
   <% end %>
 </div>
 
+<div class="rank-container2">
 <h1>デイリーランキング</h1>
-<div class="rank-container">
   <% @daily_ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
     <%= i %>位
@@ -54,8 +55,9 @@
   <% end %>
 </div>
 
+<div class="rank-container3">
 <h1>ウィークリーランキング</h1>
-<div class="rank-container">
+
   <% @weekly_ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
     <%= i %>位
