@@ -1,12 +1,41 @@
 <div class ="yohaku"></div>
-<h2>プロフィール編集</h2>
-<%= form_with model:@user, local:true do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-  <label for="inputImage">ProfileImage</label>
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-  <%= f.submit "変更を保存" %>
-
-<% end %>
-
+       <div class ="mx-auto w-25">
+        <div class="container">
+          <%= form_with model:@user, local:true do |f| %>
+            <br/>
+              <div class="row">
+                    <div class="card">
+                        <article class="card-body">
+                            <h4 class="card-title text-center">ユーザー情報変更</h4>
+                              <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg"%>
+                            <hr>
+                            <p class="text-success text-center">下記の項目を入力してください。</p>
+                                <br/>
+                                    <h3>ユーザー名</h3>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fas fa-signature"></i> </span>
+                                        </div>
+                                          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+                                    </div>
+                                <br/>
+                                  <div class="form-group">
+                                    <h3>プロフィール画像</h3>
+                                      <div class="input-group">
+                                        <div class="input-group-prepend">
+                                        </div>
+                                        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <%= f.submit "変更を保存" %>
+                                    </div>
+                                </div>
+                        </article>
+                    </div>
+            </div>
+        </div>
+</div>
+        <% end %>

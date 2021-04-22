@@ -16,7 +16,11 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import "tagsinput";
 
+body {
+  font-family: serif;
+}
 
 
 .rank-container1 {
@@ -28,7 +32,7 @@
 .rank-container2 {
   width: 400px;
   margin: 0;
-    position: absolute;
+  position: absolute;
   top: 56%;
   left: 40%;
   transform: translate(-23%,-50%);
@@ -58,7 +62,6 @@
 }
 
 .card {
-  width: 350px;
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;

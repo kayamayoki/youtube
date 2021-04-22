@@ -1,5 +1,19 @@
 <div class="yohaku"></div>
-<div class="mx-auto w-50">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <table class="table">
+     <tbody>
+    <tr>
+      <th><%= attachment_image_tag @post_youtuber, :image, :fill, 300, 300, fallback: "no_image.jpg" %></th>
+    </tr>
+    <tr>
+    <th><%= @post_youtuber.ch_name %></th>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 <div class="post-body">
 
   <%= attachment_image_tag @post_youtuber, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
@@ -51,10 +65,17 @@
       </div>
       </div>
 </div>
-<div class ="mx-auto w-50">
+
+<!--　埋め込み動画 -->
+<div class = "movie" >
 <iframe width="560" height="315" 
 src="https://www.youtube.com/embed/<%= @post_youtuber.youtube_url%>"frameborder="0" 
 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
 allowfullscreen></iframe>
+</div>
+
+
+</div>
+
 </div>
 </div>
