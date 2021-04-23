@@ -1,11 +1,13 @@
 <div class = "yohaku"></div>
+<div class = "container ">
+  <div class = "row">
 <!-- 月間ランキング　-->
 <div class="rank-container1">
-<h1>月間ランキング</h1>
+<h2>月間ランキング</h2>
 
   <% @ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
-    <%= i %>位
+    <h4><%= i %>位</h4>
     <div class="card shadow-lg">
       <%= link_to post_youtuber_path(post_youtuber) do %>
         <%= attachment_image_tag post_youtuber, :image, :fill, 200, 120, class:"card-img-top"; %>
@@ -13,11 +15,6 @@
       <div class="card-body pt-1 pb-1">
         <p class="card-title mb-0">◆<%= post_youtuber.ch_name.truncate(10) %></p>
         <div class="row border-top m-auto">
-          <div class="col-6">
-            <%= link_to user_path(post_youtuber.user) do %>
-            <%= attachment_image_tag post_youtuber.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:" rounded-circle no-image"; %><br>
-            <% end %>
-          </div>
           <div class="col-5 offset-1 pt-3">
             <%= link_to "詳細", post_youtuber_path(post_youtuber), class: "btn btn-sm btn-dark" %>
           </div>
@@ -29,10 +26,10 @@
 </div>
 
 <div class="rank-container2">
-<h1>デイリーランキング</h1>
+<h2>デイリーランキング</h2>
   <% @daily_ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
-    <%= i %>位
+    <h4><%= i %>位</h4>
     <div class="card shadow-lg">
       <%= link_to post_youtuber_path(post_youtuber) do %>
         <%= attachment_image_tag post_youtuber, :image, :fill, 200, 120, class:"card-img-top"; %>
@@ -40,11 +37,6 @@
       <div class="card-body pt-1 pb-1">
         <p class="card-title mb-0">◆<%= post_youtuber.ch_name.truncate(10) %></p>
         <div class="row border-top m-auto">
-          <div class="col-6">
-            <%= link_to user_path(post_youtuber.user) do %>
-            <%= attachment_image_tag post_youtuber.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:" rounded-circle no-image"; %><br>
-            <% end %>
-          </div>
           <div class="col-5 offset-1 pt-3">
             <%= link_to "詳細", post_youtuber_path(post_youtuber), class: "btn btn-sm btn-dark" %>
           </div>
@@ -56,11 +48,11 @@
 </div>
 
 <div class="rank-container3">
-<h1>ウィークリーランキング</h1>
+<h2>ウィークリーランキング</h2>
 
   <% @weekly_ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
-    <%= i %>位
+    <h4><%= i %>位</h4>
     <div class="card shadow-lg">
       <%= link_to post_youtuber_path(post_youtuber) do %>
         <%= attachment_image_tag post_youtuber, :image, :fill, 200, 120, class:"card-img-top"; %>
@@ -68,11 +60,6 @@
       <div class="card-body pt-1 pb-1">
         <p class="card-title mb-0">◆<%= post_youtuber.ch_name.truncate(10) %></p>
         <div class="row border-top m-auto">
-          <div class="col-6">
-            <%= link_to user_path(post_youtuber.user) do %>
-            <%= attachment_image_tag post_youtuber.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:" rounded-circle no-image"; %><br>
-            <% end %>
-          </div>
           <div class="col-5 offset-1 pt-3">
             <%= link_to "詳細", post_youtuber_path(post_youtuber), class: "btn btn-sm btn-dark" %>
           </div>
@@ -81,4 +68,6 @@
     </div>
   </div>
   <% end %>
+</div>
+</div>
 </div>

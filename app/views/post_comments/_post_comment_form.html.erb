@@ -1,4 +1,8 @@
+<div class = "yohaku"></div>
 <%= form_with(model:[post_youtuber, post_comment]) do |f| %>
-  <%= f.text_area :comment, size:"90x5" %>
+<label for="ch_name">コメント記入欄</label>
+<div class = "form-group">
+  <%= f.text_area :comment, size:"40x4" %>
+</div>
   <%= f.submit '送信'%>
 <% end %>
