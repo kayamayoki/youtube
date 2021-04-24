@@ -28,12 +28,11 @@ class PostYoutubersController < ApplicationController
   
 
   def index
-    @post_youtubers = PostYoutuber.page(params[:page]).reverse_order
+    #@post_youtubers = PostYoutuber.page(params[:page]).reverse_order
     @user = current_user
     #検索
     @q = PostYoutuber.ransack(params[:q])
-    @post_youtubers = @q.result
-    
+    @post_youtubers = @q.result.page(params[:page]).per(8)
     #タグ絞り込み
     if params[:tag_name]
       @post_youtubers = PostYoutuber.tagged_with("#{params[:tag_name]}")
@@ -74,9 +73,9 @@ class PostYoutubersController < ApplicationController
 
 
   def rank
-  @ranks = PostYoutuber.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order("count(*) desc")
-  @daily_ranks = PostYoutuber.joins(:favorites).where(favorites: { created_at: Time.now.all_day}).group(:id).order("count(*) desc")
-  @weekly_ranks = PostYoutuber.joins(:favorites).where(favorites: { created_at: Time.now.all_week}).group(:id).order("count(*) desc")
+  @ranks = PostYoutuber.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order("count(*) desc").limit(5)
+  @daily_ranks = PostYoutuber.joins(:favorites).where(favorites: { created_at: Time.now.all_day}).group(:id).order("count(*) desc").limit(5)
+  @weekly_ranks = PostYoutuber.joins(:favorites).where(favorites: { created_at: Time.now.all_week}).group(:id).order("count(*) desc").limit(5)
 
   end
 

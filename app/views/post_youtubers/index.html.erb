@@ -1,34 +1,44 @@
 <div class="yohaku"></div>
+<div class = "container-fluid">
 
+<div class="card text-center" style="width: 40rem;" >
+  <div class="card-header">
+    <h3>検索条件</h3>
+  </div>
+  <div class="card-body">
+    <div class="card-text">
   <%= search_form_for @q do |f| %>
-  <div class = 'nav-up'>
-    <%= f.text_field :ch_name_cont, placeholder: "キーワードから探す", class: "input-box" %>
+    <%= f.label :name, 'チャンネル名', class: 'label' %>
+    <%= f.text_field :ch_name_cont, placeholder: "キーワードから探す", class: "input-box" %> 
+    <%= f.submit "検索"  %>
+    <br>
+    <%= f.label :category_id, 'カテゴリー　', class: 'label' %>
     <%= f.collection_select :category_id_eq, Category.all, :id, :name,
     {include_blank: '選択なし'}, class: 'sample' %>
     <br>
-    <%= sort_link(@q, :'favorites_count desc', '人気順', hide_indicator: true) %>
-    <%= sort_link(@q, :'created_at desc', '新着順', hide_indicator: true) %>
-    <%= sort_link(@q, :'post_comment_count desc', 'コメント数順', hide_indicator: true) %>
-  </div>
-  
-  <div class='nav-down'>
-    <div class='label-select'>
-      <%= f.label :member, '登録者', class: 'label' %>
+
+      <%= f.label :member, '登録者:', class: 'label' %>
       <%= f.radio_button :member_lteq, '' %>
       指定なし
       <%= f.radio_button :member_lteq, '1000' %>
       ~1000人
-      <%= f.radio_button :member_lteq, '5000' %>
-      ~5000人
       <%= f.radio_button :member_lteq, '10000' %>
       ~10,000人
       <%= f.radio_button :member_lteq, '100000' %>
       ~100,000人
+      <%= f.radio_button :member_lteq, '1000000' %>
+      ~1,000,000人
+     <br>
+    <%= sort_link(@q, :'created_at asc', '古い順', hide_indicator: true) %>
+    <%= sort_link(@q, :'created_at desc', '新着順', hide_indicator: true) %>
+    <%= sort_link(@q, :'member desc', '登録者数順', hide_indicator: true) %>
       <br>
-          <%= f.submit "検索" %>
+<% end %>
     </div>
   </div>
-<% end %>
+</div>
+
+
 
 <div class="row">
   <% @post_youtubers.each do |post_youtuber| %> 
@@ -37,13 +47,14 @@
      <div class="card-body">
      
   <!--　YOUTUBER情報  -->
-  
+  <div class = "text-center" >
   <%= link_to post_youtuber_path(post_youtuber.id) do %>
   <%= attachment_image_tag post_youtuber, :image, :fill, 200, 200, fallback: "no_image.jpg"  %>
   <% end %>
+  </div>
   <p>チャンネル名：<%= post_youtuber.ch_name %></p>
   <p>カテゴリー : <%=  post_youtuber.category.name %></p>
-  <p>登録者数：<%= post_youtuber.member %>
+  <p>登録者数：<%= converting_to_jpy(post_youtuber.member) %>人
   <br>（※<%= post_youtuber.updated_at.strftime('%Y/%m/%d') %>時点）</p>
 
 
@@ -78,7 +89,8 @@
 
   </div>
   </div>
-
 <% end %> 
 </div>
 
+</div>
+<%= paginate @post_youtubers %>

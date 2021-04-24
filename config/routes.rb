@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
-  root 'post_youtubers#index'
   get 'post_youtubers/rank'
   root to: 'post_youtubers#rank'
 
