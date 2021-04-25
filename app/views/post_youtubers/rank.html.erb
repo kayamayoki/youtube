@@ -3,7 +3,7 @@
   <div class = "row">
 <!-- 月間ランキング　-->
 <div class="rank-container1">
-<h2>月間ランキング</h2>
+<h2>Monthly</h2>
 
   <% @ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
@@ -15,8 +15,8 @@
       <div class="card-body pt-1 pb-1">
         <p class="card-title mb-0">◆<%= post_youtuber.ch_name.truncate(10) %></p>
         <div class="row border-top m-auto">
-          <div class="col-5 offset-1 pt-3">
-            <%= link_to "詳細", post_youtuber_path(post_youtuber), class: "btn btn-sm btn-dark" %>
+          <div class="text-center col-10 offset-1 pt-3">
+            カテゴリー:<%= post_youtuber.category.name %>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="rank-container2">
-<h2>デイリーランキング</h2>
+<h2>Daily</h2>
   <% @daily_ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
     <h4><%= i %>位</h4>
@@ -37,8 +37,8 @@
       <div class="card-body pt-1 pb-1">
         <p class="card-title mb-0">◆<%= post_youtuber.ch_name.truncate(10) %></p>
         <div class="row border-top m-auto">
-          <div class="col-5 offset-1 pt-3">
-            <%= link_to "詳細", post_youtuber_path(post_youtuber), class: "btn btn-sm btn-dark" %>
+          <div class="text-center col-10 offset-1 pt-3">
+            カテゴリー:<%= post_youtuber.category.name %>
           </div>
         </div>
       </div>
@@ -48,8 +48,7 @@
 </div>
 
 <div class="rank-container3">
-<h2>ウィークリーランキング</h2>
-
+<h2>Weekly</h2>
   <% @weekly_ranks.each.with_index(1) do |post_youtuber, i| %>
   <div class="rank-box">
     <h4><%= i %>位</h4>
@@ -60,8 +59,8 @@
       <div class="card-body pt-1 pb-1">
         <p class="card-title mb-0">◆<%= post_youtuber.ch_name.truncate(10) %></p>
         <div class="row border-top m-auto">
-          <div class="col-5 offset-1 pt-3">
-            <%= link_to "詳細", post_youtuber_path(post_youtuber), class: "btn btn-sm btn-dark" %>
+          <div class="text-center col-10 offset-1 pt-3">
+            カテゴリー:<%= post_youtuber.category.name %>
           </div>
         </div>
       </div>

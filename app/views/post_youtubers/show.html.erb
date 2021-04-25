@@ -17,6 +17,7 @@
     </th>
     <tr>
       <th>
+  <!-- youtube登録ボタン -->
   <script src="https://apis.google.com/js/platform.js"></script>
   <div class="g-ytsubscribe" data-channelid="<%= @post_youtuber.url %>" data-layout=full data-count="default"></div>
    <!-- Twitterシェア -->
@@ -93,7 +94,6 @@ allowfullscreen></iframe>
      <div id="comments_area">
         <%= render 'post_comments/post_comment_list', post_youtuber: @post_youtuber, post_comments: @post_comments %>
         <%= render 'post_comments/post_comment_form', post_youtuber: @post_youtuber, post_comment: @post_comment %>
-      </div>
       </div>
 </div>
 

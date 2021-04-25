@@ -88,6 +88,9 @@ gem 'trollop'
 #検索機能
 gem 'ransack'
 
+#エラーメッセージの日本語化
+gem 'rails-i18n'
+
 #haml記法
 gem 'haml-rails'
 

@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      post_youtuber:
+        ch_name: チャンネル名
+        caption: チャンネル概要
+        member: 登録者
+        url: チャンネルURL
+        youtube_url: 動画URL
+        category: カテゴリー
+        image: チャンネル画像

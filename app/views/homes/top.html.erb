@@ -9,7 +9,7 @@
      <p class ="scroll-target text2">Welcome<br>
      to<br>Find the Yotuber!
      </p>
-   </div>
+    <div class="cp_btn"> <%= link_to 'GET START', new_user_registration_path, class: 'btn btn-default text-light' %></div>
 </div>
 
     <script>
@@ -21,14 +21,7 @@
 
             });
         })
-     ScrollReveal().reveal('.text1', { 
-       duration: 5000, 
-       delay: 3000,
-       scale: 8,
-       delay: 100,
-       reset: true,
-       viewFactor: 0.4,
-     });
+
      ScrollReveal().reveal('.text2', { 
        duration: 5000, 
        delay: 3000,
@@ -40,22 +33,6 @@
      ScrollReveal().reveal('.text3', { 
        duration: 2000, 
        origin: 'top', 
-       delay: 100,
-       distance: '500px',
-       reset: true,
-       viewFactor: 0.4,
-     });
-     ScrollReveal().reveal('.contents1', { 
-       duration: 2000, 
-       origin: 'right', 
-       delay: 100,
-       distance: '500px',
-       reset: true,
-       viewFactor: 0.4,
-     });
-     ScrollReveal().reveal('.contents2', { 
-       duration: 2000, 
-       origin: 'left', 
        delay: 100,
        distance: '500px',
        reset: true,

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   root to: 'homes#top'
   get '/about' => "homes#about"
+  get '/howto' => "homes#howto"
   get 'categories/index'
   get 'categories/edit'
   get 'users/show'

@@ -10,6 +10,8 @@ class PostYoutuber < ApplicationRecord
   validates :image, presence: true
   validates :member, presence: true
   validates :url, presence: true
+  validates :youtube_url, presence: true
+  validates :caption, presence: true
 
   #タグ
   acts_as_taggable

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Youtube</title>
+    <title>Find the Youtuber</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,15 +12,16 @@
    <script src="https://unpkg.com/scrollreveal"></script>
   <link rel="stylesheet" href="bower/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" />
   <script type="text/javascript" src="bower/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>  
-    
-</script>
+  <!-- ファビコン -->>
+    <link rel="icon" type="images/png" href="assets/favicon.png" sizes="16x16 24x24 32x32 48x48 64x64" />
+  
   </head>
 
  <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
     <nav class="navbar navbar-dark bg-dark">
       <!-- アイコン  -->
-      <a class="navbar-brand p-2" href="/"><%= image_tag('yt_logo_mono_dark.png',size: '10%') %></a> 
+      <a class="navbar-brand p-2" href="/"><%= image_tag('aplogo.jpg',size: '10%') %></a> 
       
       <% if flash[:notice] %>
       <div class="flash text-light center-block" >
@@ -55,17 +56,17 @@
               <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
             <% else %>
-            <li>
-              <%= link_to "About", about_path, class: "fas fa-link nav-link text-light" %>
+            <li class="nav-item">
+              <%= link_to "About", about_path, class: "nav-link text-light" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+              <%= link_to 'Guest login', users_guest_sign_in_path, method: :post %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
+              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
+              <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
             </li>
             <% end %>
             </ul>
@@ -84,8 +85,8 @@
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <p>新人YOUTUBERを応援するSNS</p>
-            <%= image_tag('yt_logo_mono_dark.png') %>
+            <p>YOUTUBER共有サイト</p>
+            <%= image_tag('IMG_9221.jpg') %>
           </div>
           <div class="col-md-8">
             <h6 class="text-white mt-2 mb-3">Link</h6>

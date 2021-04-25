@@ -36,6 +36,7 @@ class PostYoutubersController < ApplicationController
     #タグ絞り込み
     if params[:tag_name]
       @post_youtubers = PostYoutuber.tagged_with("#{params[:tag_name]}")
+      @post_youtubers = @post_youtubers.page(params[:page]).per(8)
     end
   end
 
@@ -73,8 +74,11 @@ class PostYoutubersController < ApplicationController
 
 
   def rank
+  #マンスリーランキング
   @ranks = PostYoutuber.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order("count(*) desc").limit(5)
+  #デイリーランキング
   @daily_ranks = PostYoutuber.joins(:favorites).where(favorites: { created_at: Time.now.all_day}).group(:id).order("count(*) desc").limit(5)
+  #ウィークリーランキング
   @weekly_ranks = PostYoutuber.joins(:favorites).where(favorites: { created_at: Time.now.all_week}).group(:id).order("count(*) desc").limit(5)
 
   end
