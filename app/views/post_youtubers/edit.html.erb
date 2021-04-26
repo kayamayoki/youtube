@@ -15,7 +15,7 @@
       </div>
       
       <div class="form-group">
-        <label for="book_title">
+        <label for="ch_name">
           チャンネル名
         </label>
         <p>
@@ -23,7 +23,7 @@
         </p>
       </div>
       <div class="form-group">
-        <label for="book_opinion">
+        <label for="member">
           登録者
         </label>
         <p>
@@ -31,15 +31,22 @@
         </p>
       </div>
       <div class="form-group">
-        <label for="book_opinion">
+        <label for="category">
+          カテゴリー
+        </label>
+        <p>
+        <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: 'カテゴリーを選択してください' } %> </p>
+      </div>
+      <div class="form-group">
+        <label for="tag_list">
           タグ
         </label>
         <p>
-          <%= f.text_field :tag_list %>
+        <%= f.text_field :tag_list, value: @post_youtuber.tag_list.join(','), id: 'tags' , class: "form-control mr-3", "data-role" => "tagsinput" %>
         </p>
       </div>
             <div class="form-group">
-        <label for="book_opinion">
+        <label for="caption">
           チャンネル説明
         </label>
         <p>
@@ -47,15 +54,24 @@
         </p>
       </div>
        <div class="form-group">
-        <label for="book_opinion">
+        <label for="url">
+          チャンネルURL
+        </label>
+        <p>
+          https://www.youtube.com/channel/<%= f.text_field :url %>
+        </p>
+      </div>
+       <div class="form-group">
+        <label for="youtube_url">
           動画URL
         </label>
         <p>
           https://youtu.be/<%= f.text_field :youtube_url %>
         </p>
       </div>
+      
       <div class="form-group">
-        <p><%= f.submit 'Update' %></p>
+        <p><%= f.submit 'Update', class: "btn btn-success" %></p>
       </div>
       <p>
         <%= link_to "Show", post_youtuber_path(@post_youtuber) %>

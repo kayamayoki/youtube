@@ -1,38 +1,54 @@
+<div class = "container-fluid">
+<div class="page1">
+   <div class="target1 text2">
+      <p class="text-center">Find the Youtuberとは？<br><br>
+      まだまだ駆け出しYOUTUBER<br>
+      あなたが応援しているYOUTUBER<br>
+      様々なYOUTUBERを共有できる投稿サイトです。<br></p><br>
+  <div class="scroll js-scroll"><a>SCROLL</a></div>
+  </div>
+</div>
 
 <div class="page1">
-      <div class="target text2">
-      ようこそFind the Youtuberへ！<br>
-      あなたが好きなYOUTUBERを共有しよう！<br>
-      新たなYOUTUBERを見つけてみませんか？<br>
-      </div>
-</div>
-<div class="page1">
-  <div class="target text3">YOUTUBERを共有＆投稿
-     <img src = "assets/main.png">
+  <div class="target text3">カテゴリー毎に分けて検索
+       <img src = "assets/main.png">
 
   </div>
 </div>
+
 <div class="page1">
-  <div class="target text4">気にいったら、そのまま登録へ！
+  <div class="target text4">その場でチャンネル登録
 　　 <img src = "assets/subscribe.png">
   </div>
 </div>
+
 <div class="page1">
-  <div class="target text5">ランキング
+  <div class="target text3">いいね数に応じたランキング
     <img src = "assets/ranking.png">
+    <br><br>
     </div>
 </div>
-<div class="page1">
-  <div class="target text2">駆け出しYOUTUBERや面白いYOUTUBERを共有し、新しい発見を。。。。
-  </div>
-</div>
 
+<div class="page1">
+<div class="target text2">
+  <p class="text-center">はじめる</p>
+ <div class="wrapper">
+   <div class="fancy-button bg-gradient1 text-center">
+     <span>
+       <i class="fa fa-wheelchair-alt"></i>
+       <%= link_to 'LET’S START！', new_user_registration_path, class: 'text-light' %>
+       </span>
+       </div>
+    </div><!-- /.wrapper -->
+ </div>
+</div>
+</div>
     <script>
 
 ScrollReveal().reveal('.text2', { 
   duration: 1600, 
   scale: 4,
-  reset: true
+  reset: false
 });
 
 ScrollReveal().reveal('.text3', { 
