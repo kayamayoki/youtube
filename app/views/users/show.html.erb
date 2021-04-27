@@ -1,59 +1,57 @@
 <div class ="yohaku"></div>
-
-<div class="container">
-<div class="row">
-<div class="col-md-3">
-<table class="table">
-  <h2>User info</2>
-  <tbody>
-    <tr>
-      <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></th>
-    </tr>
-    <tr>
-    <th>【Name】<%= @user.name %></th>
-    </tr>
-  </tbody>
-</table>
-<%= link_to '', edit_user_path(@user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
-</div>
-
-<div class="col-md-8 offset-md-1">
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>チャンネル名</th>
-      <th>更新日</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @post_youtubers.each do |post_youtuber| %>
-    <tr>
-      <td>
-      <%= link_to post_youtuber_path(post_youtuber.id) do %>
-       <%= attachment_image_tag post_youtuber, :image ,:fill, 100, 100 %>
-         <% end %>
-      </td>
-      <td>
-        <%= post_youtuber.ch_name %>
-      </td>
-      <td>
-        <%= post_youtuber.updated_at %>
-      </td>
-      <td>
-        コメント数:<%= post_youtuber.post_comments.count %>
-      </td>
-      <td>
-        いいね数:<%= post_youtuber.favorites.count %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
+   <div class="container">
+       <div class="row">
+            <div class="col-md-3">
+               <table class="table">
+                  <h2>User info</2>
+                 <tbody>
+                    <tr>
+                      <th><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></th>
+                    </tr>
+                    <tr>
+                      <th>【Name】<%= @user.name %></th>
+                    </tr>
+                  </tbody>
+                </table>
+              <%= link_to '', edit_user_path(@user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+           </div>
+        
+        <div class="col-md-8 offset-md-1">
+          <table class="table">
+             <thead>
+                  <tr>
+                    <th></th>
+                    <th>チャンネル名</th>
+                    <th>更新日</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @post_youtubers.each do |post_youtuber| %>
+                  <tr>
+                    <td>
+                    <%= link_to post_youtuber_path(post_youtuber.id) do %>
+                    <%= attachment_image_tag post_youtuber, :image ,:fill, 100, 100 %>
+                    <% end %>
+                    </td>
+                    <td>
+                      <%= post_youtuber.ch_name %>
+                    </td>
+                    <td>
+                      <%= post_youtuber.updated_at %>
+                    </td>
+                    <td>
+                      コメント数:<%= post_youtuber.post_comments.count %>
+                    </td>
+                    <td>
+                      いいね数:<%= post_youtuber.favorites.count %>
+                    </td>
+                  </tr>
+                  <% end %>
+                </tbody>
+            </table>
+         </div>
 <%= paginate @post_youtubers %>
-
-</div>
+   </div>
 </div>

@@ -3,105 +3,99 @@
   <div class="row">
     <div class="col-md-3">
       <table class="table">
-     <tbody>
-    <tr>
-      <th><%= attachment_image_tag @post_youtuber, :image, :fill, 300, 300, fallback: "no_image.jpg" %></th>
-    </tr>
-    <tr>
-    <th><%= @post_youtuber.ch_name %></th>
-    </tr>
-    <th>
-     <% @post_youtuber.tag_list.each do |tag| %>
-     <span class="badge badge-primary mr-1 p-2"><%= link_to tag, post_youtubers_path(tag_name: tag), class: "text-white" %></span>
-    <% end %>       
-    </th>
-    <tr>
-      <th>
-  <!-- youtube登録ボタン -->
-  <script src="https://apis.google.com/js/platform.js"></script>
-  <div class="g-ytsubscribe" data-channelid="<%= @post_youtuber.url %>" data-layout=full data-count="default"></div>
-   <!-- Twitterシェア -->
-  <a href ="https://twitter.com/share?ref_src=twsrc%5Etfw"
-   class = "twitter-share-button"
-   data-text = "<%= @post_youtuber.ch_name %>"
-   data-url = "https://www.youtube.com/channel/<%= @post_youtuber.url %>"
-   data-hashtags = "Youtuber"
-   data-lang = "ja"
-   data-show-count = "false">Tweet</a>
-  <script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8"></script> 
-      </th>
-    </tr>   
-    <th>
-      <!-- いいね  -->
-    <div id = 'favorite_form_<%= @post_youtuber.id %>'>
-     <%= render 'favorites/favorite_form', post_youtuber: @post_youtuber %>
-    </div>
-  
-  </tr>  
- <!-- 投稿削除  -->
-    <% if @post_youtuber.user == current_user %>
-      <td>
-        <%= link_to 'Edit', edit_post_youtuber_path(@post_youtuber), class: "btn btn-sm btn-success" %>
-     <%= link_to "Delete", post_youtuber_path(@post_youtuber), method: :delete , class: "btn btn-sm btn-danger"%>
-    </td>
-    <% end %>
-    
- </tbody>
- 
-</table>
-    
-</div>
-
-<div class="col-md-8 offset-md-1">
-<table class="table">
-  <thead>
-    <tr>
-      <th>チャンネル名</th>
-      <th>登録者</th>
-      <th>チャンネル概要</th>
-      <th>カテゴリー</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <%= @post_youtuber.ch_name %>
-      </td>
-      <td>
-        <%= converting_to_jpy(@post_youtuber.member) %>人<br>
-        (※<%= @post_youtuber.updated_at.strftime('%Y/%m/%d') %>時)
-      </td>
-      <td style="width: 35%">
-        <%= @post_youtuber.caption %>
-      </td>
-      <td>
-        <%= @post_youtuber.category.name %>
-      </td>      
-    </tr>
-  </tbody>
-</table>
-<!--　埋め込み動画 -->
-<div class = "movie" >
-  <h2>おすすめ動画</h2>
-<iframe width="560" height="315" 
-src="https://www.youtube.com/embed/<%= @post_youtuber.youtube_url%>"frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-</div>
-
-
-<!-- コメント  -->
-     <div id="comments_area">
-        <%= render 'post_comments/post_comment_list', post_youtuber: @post_youtuber, post_comments: @post_comments %>
-        <%= render 'post_comments/post_comment_form', post_youtuber: @post_youtuber, post_comment: @post_comment %>
+             <tbody>
+              <tr>
+               <th><%= attachment_image_tag @post_youtuber, :image, :fill, 300, 300, fallback: "no_image.jpg" %></th>
+              </tr>
+              <tr>
+               <th><%= @post_youtuber.ch_name %></th>
+              </tr>
+              <th>
+              <% @post_youtuber.tag_list.each do |tag| %>
+              <span class="badge badge-primary mr-1 p-2"><%= link_to tag, post_youtubers_path(tag_name: tag), class: "text-white" %></span>
+              <% end %>       
+              </th>
+             <tr>
+              <th>
+        <!--   youtube登録ボタン   -->
+            <script src="https://apis.google.com/js/platform.js"></script>
+            <div class="g-ytsubscribe" data-channelid="<%= @post_youtuber.url %>" data-layout=full data-count="default"></div>
+        <!--   Twitterシェア   -->
+               <a href ="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                  class = "twitter-share-button"
+                  data-text = "<%= @post_youtuber.ch_name %>"
+                  data-url = "https://www.youtube.com/channel/<%= @post_youtuber.url %>"
+                  data-hashtags = "Youtuber"
+                  data-lang = "ja"
+                  data-show-count = "false">Tweet</a>
+               <script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8"></script> 
+              </th>
+              </tr>   
+              <th>
+        <!--   いいね    -->
+             <div id = 'favorite_form_<%= @post_youtuber.id %>'>
+                <%= render 'favorites/favorite_form', post_youtuber: @post_youtuber %>
+             </div>
+             </tr>  
+       <!--   投稿削除    -->
+             <% if @post_youtuber.user == current_user %>
+             <td>
+               <%= link_to 'Edit', edit_post_youtuber_path(@post_youtuber), class: "btn btn-sm btn-success" %>
+               <%= link_to "Delete", post_youtuber_path(@post_youtuber), method: :delete , class: "btn btn-sm btn-danger"%>
+             </td>
+              <% end %>
+           </tbody>
+             
+            </table>
+                
+            </div>
+            
+            <div class="col-md-8 offset-md-1">
+             <table class="table">
+               <thead>
+                <tr>
+                  <th>チャンネル名</th>
+                  <th>登録者</th>
+                  <th>チャンネル概要</th>
+                  <th>カテゴリー</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= @post_youtuber.ch_name %>
+                  </td>
+                  <td>
+                    <%= converting_to_jpy(@post_youtuber.member) %>人<br>
+                    (※<%= @post_youtuber.updated_at.strftime('%Y/%m/%d') %>時)
+                  </td>
+                  <td style="width: 35%">
+                    <%= @post_youtuber.caption %>
+                  </td>
+                  <td>
+                    <%= @post_youtuber.category.name %>
+                  </td>      
+                </tr>
+              </tbody>
+            </table>
+            
+            <!--  埋め込み動画  -->
+            <div class = "movie" >
+              <h2>おすすめ動画</h2>
+                 <iframe width="560" height="315" 
+                  src="https://www.youtube.com/embed/<%= @post_youtuber.youtube_url%>"frameborder="0" 
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+            </div>
+            
+            
+            <!-- コメント  -->
+                 <div id="comments_area">
+                    <%= render 'post_comments/post_comment_list', post_youtuber: @post_youtuber, post_comments: @post_comments %>
+                    <%= render 'post_comments/post_comment_form', post_youtuber: @post_youtuber, post_comment: @post_comment %>
+                  </div>
+            </div>
+         </div>
       </div>
-</div>
-
-</div>
-
-
-</div>
-</div>
-
+   </div>
 </div>

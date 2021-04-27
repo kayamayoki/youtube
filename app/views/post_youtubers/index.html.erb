@@ -1,96 +1,90 @@
 <div class="yohaku"></div>
-<div class = "container-fluid">
-
-<div class="card text-center" style="width: 40rem;" >
-  <div class="card-header">
-    <h3>検索条件</h3>
-  </div>
-  <div class="card-body">
-    <div class="card-text">
-  <%= search_form_for @q do |f| %>
-    <%= f.label :name, 'チャンネル名', class: 'label' %>
-    <%= f.text_field :ch_name_cont, placeholder: "キーワードから探す", class: "input-box" %> 
-    <%= f.submit "検索"  %>
-    <br>
-    <%= f.label :category_id, 'カテゴリー　', class: 'label' %>
-    <%= f.collection_select :category_id_eq, Category.all, :id, :name,
-    {include_blank: '選択なし'}, class: 'sample' %>
-    <br>
-
-      <%= f.label :member, '登録者:', class: 'label' %>
-      <%= f.radio_button :member_lteq, '' %>
-      指定なし
-      <%= f.radio_button :member_lteq, '1000' %>
-      ~1000人
-      <%= f.radio_button :member_lteq, '10000' %>
-      ~10,000人
-      <%= f.radio_button :member_lteq, '100000' %>
-      ~100,000人
-      <%= f.radio_button :member_lteq, '1000000' %>
-      ~1,000,000人
-     <br>
-    <%= sort_link(@q, :'created_at asc', '古い順', hide_indicator: true) %>
-    <%= sort_link(@q, :'created_at desc', '新着順', hide_indicator: true) %>
-    <%= sort_link(@q, :'member desc', '登録者数順', hide_indicator: true) %>
-      <br>
-<% end %>
-    </div>
-  </div>
+ <div class = "container-fluid">
+   <div class="card text-center" style="width: 40rem;" >
+      <div class="card-header"><h3>検索条件</h3></div>
+         <div class="card-body">
+            <div class="card-text">
+               <%= search_form_for @q do |f| %>
+               <%= f.label :name, 'チャンネル名', class: 'label' %>
+               <%= f.text_field :ch_name_cont, placeholder: "キーワードから探す", class: "input-box" %> 
+               <%= f.submit "検索"  %>
+              <br>
+               <%= f.label :category_id, 'カテゴリー　', class: 'label' %>
+               <%= f.collection_select :category_id_eq, Category.all, :id, :name,
+               {include_blank: '選択なし'}, class: 'sample' %>
+              <br>
+    
+               <%= f.label :member, '登録者:', class: 'label' %>
+               <%= f.radio_button :member_lteq, '' %>
+               指定なし
+               <%= f.radio_button :member_lteq, '1000' %>
+               ~1000人
+               <%= f.radio_button :member_lteq, '10000' %>
+               ~10,000人
+               <%= f.radio_button :member_lteq, '100000' %>
+               ~100,000人
+               <%= f.radio_button :member_lteq, '1000000' %>
+               ~1,000,000人
+              <br>
+              <%= sort_link(@q, :'created_at asc', '古い順', hide_indicator: true) %>
+              <%= sort_link(@q, :'created_at desc', '新着順', hide_indicator: true) %>
+              <%= sort_link(@q, :'member desc', '登録者数順', hide_indicator: true) %>
+             <br>
+      <% end %>
+     </div>
+   </div>
 </div>
 
 
 
 <div class="row">
-  <% @post_youtubers.each do |post_youtuber| %> 
-  <div class="card" style="width: 20rem;">
-     
-     <div class="card-body">
+    <% @post_youtubers.each do |post_youtuber| %> 
+       <div class="card" style="width: 20rem;">
+          <div class="card-body">
      
   <!--　YOUTUBER情報  -->
-  <div class = "text-center" >
-  <%= link_to post_youtuber_path(post_youtuber.id) do %>
-  <%= attachment_image_tag post_youtuber, :image, :fill, 200, 200, fallback: "no_image.jpg"  %>
-  <% end %>
-  </div>
-  <p>チャンネル名：<%= post_youtuber.ch_name %></p>
-  <p>カテゴリー : <%=  post_youtuber.category.name %></p>
-  <p>登録者数：<%= converting_to_jpy(post_youtuber.member) %>人
-  <br>（※<%= post_youtuber.updated_at.strftime('%Y/%m/%d') %>時点）</p>
+           <div class = "text-center" >
+             <%= link_to post_youtuber_path(post_youtuber.id) do %>
+             <%= attachment_image_tag post_youtuber, :image, :fill, 200, 200, fallback: "no_image.jpg"  %>
+             <% end %>
+           </div>
+             <p>チャンネル名：<%= post_youtuber.ch_name %></p>
+             <p>カテゴリー : <%=  post_youtuber.category.name %></p>
+             <p>登録者数：<%= converting_to_jpy(post_youtuber.member) %>人
+             <br>（※<%= post_youtuber.updated_at.strftime('%Y/%m/%d') %>時点）</p>
 
 
-  <!-- タグ -->
-  <% post_youtuber.tag_list.each do |tag| %>
-    <span class="badge badge-primary mr-1 p-2"><%= link_to tag, post_youtubers_path(tag_name: tag), class: "text-white" %></span>
-  <% end %>
+  <!--   タグ設置   -->
+            <% post_youtuber.tag_list.each do |tag| %>
+             <span class="badge badge-primary mr-1 p-2"><%= link_to tag, post_youtubers_path(tag_name: tag), class: "text-white" %>
+             </span>
+            <% end %>
   
   <!-- コメント -->
-  <p><%= link_to "#{post_youtuber.post_comments.count} コメント", post_youtuber_path(post_youtuber.id) %></p>
+             <p><%= link_to "#{post_youtuber.post_comments.count} コメント", post_youtuber_path(post_youtuber.id) %></p>
  
- <!-- いいね  --> 
-  <div id= "favorite_form_<%= post_youtuber.id %>">
-  <%= render 'favorites/favorite_form', post_youtuber: post_youtuber %>
-  </div>
+  <!-- いいね  --> 
+             <div id= "favorite_form_<%= post_youtuber.id %>">
+                <%= render 'favorites/favorite_form', post_youtuber: post_youtuber %>
+             </div>
   
   <!-- YOUTUBE登録ボタン -->
-  <script src="https://apis.google.com/js/platform.js"></script>
-  <div class="g-ytsubscribe" data-channelid="<%= post_youtuber.url %>" data-layout=full data-count="default"></div>
-  
-  <br>
-  <!-- Twitterシェア -->
-  <a href ="https://twitter.com/share?ref_src=twsrc%5Etfw"
-   class = "twitter-share-button"
-   data-text = "<%= post_youtuber.ch_name %>"
-   data-url = "<%= post_youtuber.url %>"
-   data-hashtags = "Youtuber"
-   data-lang = "ja"
-   data-show-count = "false">Tweet</a>
-  <script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8"></script> 
+             <script src="https://apis.google.com/js/platform.js"></script>
+             <div class="g-ytsubscribe" data-channelid="<%= post_youtuber.url %>" data-layout=full data-count="default">
+             </div><br>
+  <!--  Twitterシェア  -->
+             <a href ="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                class = "twitter-share-button"
+                data-text = "<%= post_youtuber.ch_name %>"
+                data-url = "<%= post_youtuber.url %>"
+                data-hashtags = "Youtuber"
+                data-lang = "ja"
+                data-show-count = "false">Tweet</a>
+             <script async src = "https://platform.twitter.com/widgets.js" charset = "utf-8"></script> 
 
-
-  </div>
-  </div>
-<% end %> 
-</div>
-
+         </div>
+       </div>
+     <% end %> 
+   </div>
 </div>
 <%= paginate @post_youtubers %>

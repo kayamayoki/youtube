@@ -1,18 +1,20 @@
 <div class="yohaku"></div>
+
 <div class="mx-auto w-50">
-<div class = "card">
-<div class ="text-center mt-3">
-<div class="post-body">
+  <div class = "card">
+    <div class ="text-center mt-3">
+       <div class="post-body">
 
   <%= attachment_image_tag @post_youtuber, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
   <%= form_with model:@post_youtuber, local: true do |f| %>
+  
   <div class="form-group">
     <h3>プロフィール画像</h3>
       <div class="input-group">
         <div class="input-group-prepend"></div>
      <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
    </div>
-      </div>
+ </div>
       
       <div class="form-group">
         <label for="ch_name">
@@ -79,9 +81,9 @@
         <%= link_to "Back", post_youtubers_path %>
       </p>
 
-</div>
-</div>
-</div>
-</div>
+       </div>
+     </div>
+   </div>
+ </div>
 
 <%end%>

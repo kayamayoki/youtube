@@ -1,5 +1,6 @@
 class PostCommentsController < ApplicationController
 
+  #コメント追加
   def create
     post_youtuber = PostYoutuber.find(params[:post_youtuber_id])
     comment = current_user.post_comments.new(post_comment_params)
@@ -7,7 +8,8 @@ class PostCommentsController < ApplicationController
     comment.save
     redirect_to post_youtuber_path(post_youtuber)
   end
-
+  
+  #コメント削除
   def destroy
     PostComment.find_by(id: params[:id], post_youtuber_id: params[:post_youtuber_id]).destroy
     redirect_to post_youtuber_path(params[:post_youtuber_id])

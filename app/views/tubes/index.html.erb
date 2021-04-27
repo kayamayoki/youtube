@@ -1,55 +1,47 @@
 <div class ="yohaku"></div>
-
+<!--  検索バー   -->
 <div class="container-fluid">
-
-<%= form_with(url: tubes_index_path, local: true, method: :get, class: "search-form") do |form| %>
-<div class="card text-center" style="width: 30rem;" >
-  <div class="card-header">
-    <h3>簡易検索</h3>
-  </div>
-  <div class="card-body">
-    <div class="card-text"> 
-   <!-- 検索バー  -->
-     <%= form.text_field :keyword, placeholder: "検索", class: "search-input col-sm-8" %>
-        <%= form.submit "検索", class: "search-btn" %>
+  <%= form_with(url: tubes_index_path, local: true, method: :get, class: "search-form") do |form| %>
+    <div class="card text-center" style="width: 30rem;" >
+      <div class="card-header"><h3>簡易検索</h3></div>
+          <div class="card-body">
+             <div class="card-text"> 
+               <!-- 検索バー  -->
+                 <%= form.text_field :keyword, placeholder: "検索", class: "search-input col-sm-8" %>
+                 <%= form.submit "検索", class: "search-btn" %>
+                 </div>
+                 <%= form.radio_button :order, :relevance %>
+                 <%= form.label :order, "通常検索", {value: :relevance} %>
+            
+                 <%= form.radio_button :order, :viewCount %>
+                 <%= form.label :order, "再生回数が多い順", {value: :viewCount} %>
+            </div>
+        <% end %>
      </div>
-     <%= form.radio_button :order, :relevance %>
-     <%= form.label :order, "通常検索", {value: :relevance} %>
-
-     <%= form.radio_button :order, :viewCount %>
-     <%= form.label :order, "再生回数が多い順", {value: :viewCount} %>
-    </div>
-
-<% end %>
-</div>
-</div>
+   </div>
 </div>
 
-
-
-
+<!--  動画カード  -->
 <div class="row">
   <% if @youtube_data != nil %>
-<% @youtube_data.items.each do |item| %>
-  <div class="card" style="width: 20rem;">
-     
-     <div class="card-body">
-    <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="200" src="https://www.youtube.com/embed/<%= item.id.video_id %>" width="260"></iframe>
-      <% snippet = item.snippet %>
-     <p class="movie_title">
-      <%= snippet.title %>
-     </p>
-     <p class="channel_title">
-  <%= snippet.channel_title %>
-</p>
-<p class="movie_date">
-  <%= snippet.published_at.strftime("%Y年%m月%d日 %H時%M分") %>
-</p>
- 
-      
-       </div>
-       </div>
-       <% end %>
-       <% end %>
-       </div>
+  <% @youtube_data.items.each do |item| %>
+   <div class="card" style="width: 20rem;">
+         <div class="card-body">
+            <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    frameborder="0" height="200" src="https://www.youtube.com/embed/<%= item.id.video_id %>" width="260"></iframe>
+                 <% snippet = item.snippet %>
+                 <p class="movie_title">
+                 <%= snippet.title %>
+                 </p>
+                 <p class="channel_title">
+                 <%= snippet.channel_title %>
+                 </p>
+                 <p class="movie_date">
+                 <%= snippet.published_at.strftime("%Y年%m月%d日 %H時%M分") %>
+                 </p>
+         </div>
+      </div>
+  <% end %>
+  <% end %>
+</div>
 

@@ -20,6 +20,7 @@ class TubesController < ApplicationController
     }
     youtube.list_searches(:snippet, opt)
   end
+  
   def index
     keyword = params[:keyword]
     order = params[:order]

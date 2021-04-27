@@ -1,49 +1,56 @@
 <div class = "container-fluid">
-<div class="page1">
-   <div class="target1 text2">
-      <p class="text-center">Find the Youtuberとは？<br><br>
-      まだまだ駆け出しYOUTUBER<br>
-      あなたが応援しているYOUTUBER<br>
-      様々なYOUTUBERを共有できる投稿サイトです。<br></p><br>
-  <div class="scroll js-scroll"><a>SCROLL</a></div>
-  </div>
+  <div class="page1">
+    <div class="target1 text2">
+       <p class="text-center">Find the Youtuberとは？<br><br>
+                              まだまだ駆け出しYOUTUBER<br>
+                              あなたが応援しているYOUTUBER<br>
+                              様々なYOUTUBERを共有できる投稿サイトです。<br></p><br>
+       <div class="scroll js-scroll"><a>SCROLL</a></div>
+   </div>
 </div>
 
 <div class="page1">
   <div class="target text3">カテゴリー毎に分けて検索
-       <img src = "assets/main.png">
-
+    <div class="img"> 
+      <%= image_tag("main.png", alt: "トップ") %>
+    </div>
   </div>
 </div>
 
 <div class="page1">
   <div class="target text4">その場でチャンネル登録
-　　 <img src = "assets/subscribe.png">
+    <div class="img">
+        <%= image_tag("main.png", alt: "トップ") %>
+    </div>
   </div>
 </div>
 
 <div class="page1">
   <div class="target text3">いいね数に応じたランキング
-    <img src = "assets/ranking.png">
+    <div class="img"> 
+      <%= image_tag("main.png", alt: "トップ") %>
+     </div>
     <br><br>
-    </div>
+  </div>
 </div>
 
-<div class="page1">
-<div class="target text2">
-  <p class="text-center">はじめる</p>
- <div class="wrapper">
-   <div class="fancy-button bg-gradient1 text-center">
-     <span>
-       <i class="fa fa-wheelchair-alt"></i>
-       <%= link_to 'LET’S START！', new_user_registration_path, class: 'text-light' %>
-       </span>
+ <div class="page1">
+   <div class="target text2">
+     <p class="text-center">はじめる</p>
+       <div class="wrapper">
+         <div class="fancy-button bg-gradient1 text-center">
+           <span>
+             <i class="fa fa-wheelchair-alt"></i>
+             <%= link_to 'LET’S START！', new_user_registration_path, class: 'text-light' %>
+           </span>
+         </div>
        </div>
-    </div><!-- /.wrapper -->
+    </div>
  </div>
+
 </div>
-</div>
-    <script>
+
+<script>
 
 ScrollReveal().reveal('.text2', { 
   duration: 1600, 
@@ -65,21 +72,4 @@ ScrollReveal().reveal('.text4', {
   reset: true   
 });
 
-ScrollReveal().reveal('.text5', { 
-  duration: 3000, 
-  origin: 'top', 
-  distance: '500px',
-  reset: true   
-});
-
-ScrollReveal().reveal('.text6', { 
-  duration: 3000, 
-  scale: 0.1,
-  reset: true
-});
-
-ScrollReveal().reveal('.image1', { 
-  duration: 2000,
-  reset: true   
-});
-    </script>
+</script>

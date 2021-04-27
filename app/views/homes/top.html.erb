@@ -1,16 +1,21 @@
+<!-- 暗転アニメーション -->
  <div class="up"></div>
   <div class="down"></div>
     <div class="line"></div>
 
-   <div class = "scroll-content">
-     
-     <div class = "scroll-target image1">
-         <img src = "assets/social-media-1233873_1920.jpeg">
-     <p class ="scroll-target text2">Welcome<br>
-     to<br>Find the Yotuber!
-     </p>
-    <div class="cp_btn"> <%= link_to 'GET START', new_user_registration_path, class: 'btn btn-default text-light' %></div>
-</div>
+<!-- トップ -->
+    <div class = "scroll-content">
+      <div class = "scroll-target image1">
+        <img src = "assets/social-media-1233873_1920.jpeg">
+          <p class ="scroll-target text2">
+              Welcome<br>
+              to<br>
+              Find the Yotuber!</p>
+          <div class="cp_btn">
+        <%= link_to 'GET START', new_user_registration_path, class: 'btn btn-default text-light' %>
+        </div>
+      </div>
+    </div> 
 
     <script>
         $(".line").animate({"width":"100%"},1500,function(){

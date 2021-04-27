@@ -9,12 +9,13 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   attachment :profile_image
 
-def self.guest
-  find_or_create_by!(email: 'aaa@aaa.com') do |user|
-    user.password = SecureRandom.urlsafe_base64
-    user.password_confirmation = user.password
-    user.name = 'ゲスト'
+ #ゲストログイン
+  def self.guest
+    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = 'ゲスト'
+    end
   end
-  end
-
+  
 end
