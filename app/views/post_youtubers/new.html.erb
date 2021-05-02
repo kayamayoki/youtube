@@ -7,7 +7,7 @@
       <%= message %>
       <% end %>
       <% end %>
-      
+
          <%= form_with model: @post_youtuber, local:true do |f| %>
        <div class ="max-auto w-50">
         <label for="ch_name">チャンネル名</label>
@@ -15,49 +15,49 @@
             <%= f.text_field :ch_name, autofocus: true, placeholder: "チャンネル名", class: "form-control mr-3" %>
         </div>
        </div>
-       
+
        <div class ="max-auto w-50">
         <label for="member">登録者数</label>
-         <div class="form-group"> 
+         <div class="form-group">
            <%= f.text_field :member, autofocus: true, placeholder: "半角数字", class: "form-control mr-3" %>
          </div>
        </div>
-       
+
        <div class="form-group">
         <label for="caption">チャンネル概要</label>
             <%= f.text_area :caption, autofocus: true, placeholder: "チャンネル概要", class: "form-control mr-3" %>
         </div>
-       
-       
+
+
        <div class="form-group">
         <label for="url">チャンネルURL<%= link_to '※URLがわからない方は、こちらへ', howto_path %></label>
             <%= f.text_field :url, autofocus: true, placeholder: " (https://www.youtube.com/channel/XXXXXXXXXXXX ) ", class: "form-control mr-3" %>
         </div>
-    
+
        <div class="form-group">
         <label for="youtube_url">イチオシ動画 <%= link_to '※URLがわからない方は、こちらへ', howto_path %></label>
             <%= f.text_field :youtube_url, autofocus: true, placeholder: " (https://youtu.be/XXXXXXXXXXXX)", class: "form-control mr-3" %>
         </div>
-    
+
        <div class="form-group">
         <label for="タグ">タグ　(※半角カンマで区切る)</label>
             <%= f.text_field :tag_list, value: @post_youtuber.tag_list.join(','), id: 'tags' , class: "form-control mr-3", "data-role" => "tagsinput" %>
         </div>
-       
+
        <div class ="max-auto w-50">
         <label for="category_id">カテゴリー</label>
          <div class="form-group">
             <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: 'カテゴリーを選択してください' }, class: 'form-control' %>
          </div>
        </div>
-       
+
       <div class="form-group">
         <label for="image">チャンネル画像</label>
       <div class="form-group">
        <%= f.attachment_field :image %>
       </div>
       </div>
-    
+
      <div class="form-inline mb-3">
         <div class="form-group">
           <%= f.submit "投稿", class: "btn btn-block btn-success" %>

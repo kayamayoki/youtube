@@ -23,7 +23,7 @@
             </div>
         <% end %>
        </div>
-    
+
     <!-- デイリーランキング -->
         <div class="rank-container2">
           <h2>Daily</h2>
@@ -46,7 +46,7 @@
              </div>
           <% end %>
        </div>
-    
+
     <!-- ウィークリーランキング  -->
          <div class="rank-container3">
            <h2>Weekly</h2>
@@ -55,7 +55,7 @@
                <h4><%= i %>位</h4>
                 <div class="card shadow-lg">
                   <%= link_to post_youtuber_path(post_youtuber) do %>
-                  <%= attachment_image_tag post_youtuber, :image, :fill, 200, 120, class:"card-img-top"; %>
+                    <%= attachment_image_tag post_youtuber, :image, :fill, 200, 120, class:"card-img-top"; %>
                   <% end %>
                   <div class="card-body pt-1 pb-1">
                     <p class="card-title mb-0">◆<%= post_youtuber.ch_name.truncate(10) %></p>

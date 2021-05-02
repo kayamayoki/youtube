@@ -1,6 +1,12 @@
 {
+    "ace": {
+        "@tabSize": 2
+    },
     "extensions": {
         "@aws.profile": "profile:default"
+    },
+    "general": {
+        "@stripws": true
     },
     "instance": {
         "@automaticShutdown": "30"
