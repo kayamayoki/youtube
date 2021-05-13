@@ -1,23 +1,24 @@
 class PostYoutubersController < ApplicationController
+
   before_action :authenticate_user!
-  
+
   def new
       @post_youtuber = PostYoutuber.new
   end
 
   def create
       @post_youtuber = PostYoutuber.new(post_youtuber_params)
-      
+
       #チャンネルID取得
       url = params[:post_youtuber][:url]
       url = url.last(24)
-      @post_youtuber.url = url 
-      
+      @post_youtuber.url = url
+
       #動画ID取得
       youtube_url = params[:post_youtuber][:youtube_url]
       youtube_url = youtube_url.last(11)
-      @post_youtuber.youtube_url = youtube_url   
-      
+      @post_youtuber.youtube_url = youtube_url
+
       @post_youtuber.user_id = current_user.id
       if @post_youtuber.save
         redirect_to post_youtubers_path
@@ -25,7 +26,7 @@ class PostYoutubersController < ApplicationController
         render :new
       end
   end
-  
+
   def index
       #@post_youtubers = PostYoutuber.page(params[:page]).reverse_order
       @user = current_user
@@ -47,8 +48,8 @@ class PostYoutubersController < ApplicationController
         redirect_to post_youtubers_path
       end
     end
-  
-  
+
+
     def update
       @post_youtuber = PostYoutuber.find(params[:id])
       if @post_youtuber.update(post_youtuber_params)
@@ -58,15 +59,15 @@ class PostYoutubersController < ApplicationController
         render :edit
       end
     end
-  
- 
+
+
     def show
         @post_youtuber = PostYoutuber.find(params[:id])
         @post_comment = PostComment.new
         @post_comments = @post_youtuber.post_comments
     end
-  
-  
+
+
     def destroy
         @post_youtuber = PostYoutuber.find(params[:id])
         @post_youtuber.destroy
