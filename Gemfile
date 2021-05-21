@@ -63,6 +63,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
+
+gem 'omniauth'
+
+#グーグル認証
+gem 'omniauth-google-oauth2'
+
+#フェイスブック認証
+gem 'omniauth-facebook'
+
+gem 'dotenv-rails'
+
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
