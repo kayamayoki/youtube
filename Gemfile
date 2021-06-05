@@ -66,7 +66,7 @@ gem 'devise'
 
 gem 'omniauth'
 
-#グーグル認証
+#グーグル
 gem 'omniauth-google-oauth2'
 
 #フェイスブック認証
